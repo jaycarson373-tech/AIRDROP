@@ -24,7 +24,7 @@ export function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 mb-8">
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          <span className="text-xs text-muted-foreground font-medium">Pump said soon. We&apos;re making it rain.</span>
+          <span className="text-xs text-muted-foreground font-medium">Pump said soon. We said Now.</span>
         </div>
 
         {/* Headline */}

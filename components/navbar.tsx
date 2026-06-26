@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Menu, X, ExternalLink } from "lucide-react"
 
-const links = ["How It Works", "Dashboard", "Timeline", "Viral Tweets"]
+const links = ["How It Works", "Dashboard"]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
