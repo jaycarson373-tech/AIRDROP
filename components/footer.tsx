@@ -1,19 +1,7 @@
 const cols = [
   {
-    heading: "Protocol",
-    links: ["How it Works", "Tokenomics", "Roadmap", "Whitepaper"],
-  },
-  {
-    heading: "Community",
-    links: ["Discord", "Twitter", "Telegram", "Medium"],
-  },
-  {
-    heading: "Resources",
-    links: ["Contract", "Charts", "Dashboard", "Support"],
-  },
-  {
-    heading: "Legal",
-    links: ["Privacy", "Terms", "Security", "Disclaimers"],
+    heading: "Product",
+    links: ["How it Works", "Dashboard", "Whitepaper"],
   },
 ]
 

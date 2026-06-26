@@ -4,9 +4,7 @@ import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { LogoTicker } from "@/components/logo-ticker"
 import { Navbar } from "@/components/navbar"
-import { Pricing } from "@/components/pricing"
 import { Stats } from "@/components/stats"
-import { Testimonials } from "@/components/testimonials"
 
 export default function Page() {
   return (
@@ -17,8 +15,6 @@ export default function Page() {
         <LogoTicker />
         <Stats />
         <Features />
-        <Testimonials />
-        <Pricing />
         <CtaSection />
       </main>
       <Footer />
