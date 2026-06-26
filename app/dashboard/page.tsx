@@ -25,10 +25,63 @@ interface Holder {
   percentage: string
 }
 
+const fallbackAirdropData: AirdropStatus = {
+  currentEpoch: 0,
+  totalEpochs: 0,
+  lastPumpAirdropped: 0,
+  nextDropTime: new Date().toISOString(),
+  epochHistory: [],
+}
+
+function numberOrZero(value: unknown) {
+  const parsed = Number(value ?? 0)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
+function normalizeAirdropData(value: unknown): AirdropStatus {
+  if (!value || typeof value !== 'object') return fallbackAirdropData
+
+  const data = value as Partial<AirdropStatus>
+  const epochHistory = Array.isArray(data.epochHistory)
+    ? data.epochHistory.map((epoch, index) => ({
+        epoch: numberOrZero(epoch?.epoch) || index + 1,
+        pumpAmount: numberOrZero(epoch?.pumpAmount),
+        timestamp: epoch?.timestamp ?? new Date().toISOString(),
+      }))
+    : []
+
+  return {
+    currentEpoch: numberOrZero(data.currentEpoch),
+    totalEpochs: numberOrZero(data.totalEpochs),
+    lastPumpAirdropped: numberOrZero(data.lastPumpAirdropped),
+    nextDropTime: data.nextDropTime ?? new Date().toISOString(),
+    epochHistory,
+  }
+}
+
+function normalizeHolders(value: unknown): Holder[] {
+  if (!value || typeof value !== 'object') return []
+
+  const topHolders = (value as { topHolders?: unknown }).topHolders
+  if (!Array.isArray(topHolders)) return []
+
+  return topHolders.map((holder, index) => {
+    const row = holder as Partial<Holder>
+
+    return {
+      rank: numberOrZero(row.rank) || index + 1,
+      address: row.address ?? '',
+      balance: numberOrZero(row.balance),
+      percentage: String(row.percentage ?? '0.00'),
+    }
+  })
+}
+
 export default function DashboardPage() {
-  const [airdropData, setAirdropData] = useState<AirdropStatus | null>(null)
+  const [airdropData, setAirdropData] = useState<AirdropStatus>(fallbackAirdropData)
   const [holders, setHolders] = useState<Holder[]>([])
   const [loading, setLoading] = useState(true)
+  const [warning, setWarning] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,23 +91,31 @@ export default function DashboardPage() {
           fetch('/api/top-holders'),
         ])
 
-        const statusData = await statusRes.json()
-        const holdersData = await holdersRes.json()
+        const [statusData, holdersData] = await Promise.all([
+          statusRes.json().catch(() => null),
+          holdersRes.json().catch(() => null),
+        ])
 
-        setAirdropData(statusData)
-        setHolders(holdersData.topHolders)
+        setAirdropData(normalizeAirdropData(statusData))
+        setHolders(normalizeHolders(holdersData))
+        setWarning(!statusRes.ok || !holdersRes.ok ? 'Some live dashboard data is temporarily unavailable.' : null)
       } catch (error) {
         console.error('Error fetching dashboard data:', error)
+        setAirdropData(fallbackAirdropData)
+        setHolders([])
+        setWarning('Some live dashboard data is temporarily unavailable.')
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-    const interval = setInterval(fetchData, 60000) // Refresh every minute
+    const interval = setInterval(fetchData, 60000)
 
     return () => clearInterval(interval)
   }, [])
+
+  const totalAirdropped = airdropData.epochHistory.reduce((sum, epoch) => sum + epoch.pumpAmount, 0)
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -73,76 +134,84 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="grid gap-8">
+              {warning && (
+                <div className="rounded-lg border border-primary/30 bg-primary/10 p-4 text-sm text-primary">
+                  {warning}
+                </div>
+              )}
+
               {/* Countdown Timer Section */}
               <div className="rounded-lg border border-border bg-surface/50 p-8">
                 <CountdownTimer />
               </div>
 
               {/* Stats Grid */}
-              {airdropData && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="rounded-lg border border-border bg-surface/50 p-6">
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
-                      Current Epoch
-                    </p>
-                    <p className="text-3xl font-bold text-primary">{airdropData.currentEpoch}</p>
-                  </div>
-
-                  <div className="rounded-lg border border-border bg-surface/50 p-6">
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
-                      Total Epochs
-                    </p>
-                    <p className="text-3xl font-bold text-primary">{airdropData.totalEpochs}</p>
-                  </div>
-
-                  <div className="rounded-lg border border-border bg-surface/50 p-6">
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
-                      Last Airdrop
-                    </p>
-                    <p className="text-3xl font-bold text-primary">{airdropData.lastPumpAirdropped.toFixed(2)}</p>
-                    <p className="text-xs text-muted-foreground mt-1">PUMP tokens</p>
-                  </div>
-
-                  <div className="rounded-lg border border-border bg-surface/50 p-6">
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
-                      Total Airdropped
-                    </p>
-                    <p className="text-3xl font-bold text-primary">
-                      {(airdropData.epochHistory.reduce((sum, e) => sum + e.pumpAmount, 0)).toFixed(2)}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">PUMP tokens</p>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="rounded-lg border border-border bg-surface/50 p-6">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
+                    Current Epoch
+                  </p>
+                  <p className="text-3xl font-bold text-primary">{airdropData.currentEpoch}</p>
                 </div>
-              )}
+
+                <div className="rounded-lg border border-border bg-surface/50 p-6">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
+                    Total Epochs
+                  </p>
+                  <p className="text-3xl font-bold text-primary">{airdropData.totalEpochs}</p>
+                </div>
+
+                <div className="rounded-lg border border-border bg-surface/50 p-6">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
+                    Last Airdrop
+                  </p>
+                  <p className="text-3xl font-bold text-primary">{airdropData.lastPumpAirdropped.toFixed(2)}</p>
+                  <p className="text-xs text-muted-foreground mt-1">PUMP tokens</p>
+                </div>
+
+                <div className="rounded-lg border border-border bg-surface/50 p-6">
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-2">
+                    Total Airdropped
+                  </p>
+                  <p className="text-3xl font-bold text-primary">{totalAirdropped.toFixed(2)}</p>
+                  <p className="text-xs text-muted-foreground mt-1">PUMP tokens</p>
+                </div>
+              </div>
 
               {/* Epoch History */}
-              {airdropData && (
-                <div className="rounded-lg border border-border bg-surface/50 p-6">
-                  <h2 className="text-xl font-semibold text-foreground mb-6">Epoch History</h2>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 text-muted-foreground font-medium">Epoch</th>
-                          <th className="text-left py-3 px-4 text-muted-foreground font-medium">PUMP Airdropped</th>
-                          <th className="text-left py-3 px-4 text-muted-foreground font-medium">Timestamp</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {airdropData.epochHistory.map((epoch) => (
-                          <tr key={epoch.epoch} className="border-b border-border/50 hover:bg-surface/50 transition-colors">
+              <div className="rounded-lg border border-border bg-surface/50 p-6">
+                <h2 className="text-xl font-semibold text-foreground mb-6">Epoch History</h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-3 px-4 text-muted-foreground font-medium">Epoch</th>
+                        <th className="text-left py-3 px-4 text-muted-foreground font-medium">PUMP Airdropped</th>
+                        <th className="text-left py-3 px-4 text-muted-foreground font-medium">Timestamp</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {airdropData.epochHistory.length > 0 ? (
+                        airdropData.epochHistory.map((epoch) => (
+                          <tr key={`${epoch.epoch}-${epoch.timestamp}`} className="border-b border-border/50 hover:bg-surface/50 transition-colors">
                             <td className="py-3 px-4 text-foreground font-medium">#{epoch.epoch}</td>
                             <td className="py-3 px-4 text-primary font-semibold">{epoch.pumpAmount.toFixed(2)}</td>
                             <td className="py-3 px-4 text-muted-foreground">
                               {new Date(epoch.timestamp).toLocaleString()}
                             </td>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={3} className="py-6 px-4 text-center text-muted-foreground">
+                            No completed drops yet.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
-              )}
+              </div>
 
               {/* Top 50 Holders */}
               <div className="rounded-lg border border-border bg-surface/50 p-6">
@@ -158,16 +227,24 @@ export default function DashboardPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {holders.map((holder) => (
-                        <tr key={holder.rank} className="border-b border-border/50 hover:bg-surface/50 transition-colors">
-                          <td className="py-3 px-4 text-foreground font-medium w-12">{holder.rank}</td>
-                          <td className="py-3 px-4 text-muted-foreground font-mono text-xs">{holder.address}</td>
-                          <td className="py-3 px-4 text-foreground text-right font-semibold">
-                            {holder.balance.toLocaleString()}
+                      {holders.length > 0 ? (
+                        holders.map((holder) => (
+                          <tr key={`${holder.rank}-${holder.address}`} className="border-b border-border/50 hover:bg-surface/50 transition-colors">
+                            <td className="py-3 px-4 text-foreground font-medium w-12">{holder.rank}</td>
+                            <td className="py-3 px-4 text-muted-foreground font-mono text-xs">{holder.address}</td>
+                            <td className="py-3 px-4 text-foreground text-right font-semibold">
+                              {holder.balance.toLocaleString()}
+                            </td>
+                            <td className="py-3 px-4 text-primary text-right font-semibold">{holder.percentage}%</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={4} className="py-6 px-4 text-center text-muted-foreground">
+                            No holder snapshot yet.
                           </td>
-                          <td className="py-3 px-4 text-primary text-right font-semibold">{holder.percentage}%</td>
                         </tr>
-                      ))}
+                      )}
                     </tbody>
                   </table>
                 </div>
