@@ -12,10 +12,12 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors">
-          <svg className="h-8 w-8 fill-current" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.666-5.829 6.666H2.56l7.73-8.835L1.15 2.25h6.674l4.612 6.096L17.596 2.25h.648zm-1.125 17.5h1.824L7.12 3.993H5.233l11.891 15.757z"/>
-          </svg>
+        <a href="/" className="flex items-center gap-2 font-semibold text-foreground">
+          <img 
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg"
+            alt="$AIRDROP"
+            className="h-8 w-8 rounded-full"
+          />
           <span className="text-base tracking-tight">$AIRDROP</span>
         </a>
 
@@ -35,16 +37,15 @@ export function Navbar() {
         {/* Social + CTA */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href={`https://x.com/search?q=${process.env.NEXT_PUBLIC_AIRDROP_CA || 'airdrop'}`}
+            href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="X (Twitter)"
             title="Follow on X"
           >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 11-11.858 10.318 10 10 0 0111.858-10.318z" />
-              <path d="M8 16.5c0-.667.333-1.333 1-2s1.333-.667 2-1 1.333.667 2 1 1 1.333 1 2m6-2c0-1.5-1-2.5-2-3s-2 .5-3 1.5" />
+            <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.666-5.829 6.666H2.56l7.73-8.835L1.15 2.25h6.674l4.612 6.096L17.596 2.25h.648zm-1.125 17.5h1.824L7.12 3.993H5.233l11.891 15.757z"/>
             </svg>
           </a>
           <a
