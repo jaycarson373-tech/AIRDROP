@@ -12,12 +12,10 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-semibold text-foreground">
-          <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg"
-            alt="Where Is The Airdrop"
-            className="h-8 w-8 rounded-full"
-          />
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors">
+          <svg className="h-8 w-8 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.666-5.829 6.666H2.56l7.73-8.835L1.15 2.25h6.674l4.612 6.096L17.596 2.25h.648zm-1.125 17.5h1.824L7.12 3.993H5.233l11.891 15.757z"/>
+          </svg>
           <span className="text-base tracking-tight">$AIRDROP</span>
         </a>
 
