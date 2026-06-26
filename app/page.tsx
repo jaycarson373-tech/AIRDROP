@@ -2,7 +2,6 @@ import { CtaSection } from "@/components/cta-section"
 import { Features } from "@/components/features"
 import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
-import { LogoTicker } from "@/components/logo-ticker"
 import { Navbar } from "@/components/navbar"
 import { Stats } from "@/components/stats"
 
@@ -12,7 +11,6 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <LogoTicker />
         <Stats />
         <Features />
         <CtaSection />
