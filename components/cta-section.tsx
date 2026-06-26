@@ -1,0 +1,38 @@
+import { ArrowRight } from "lucide-react"
+
+export function CtaSection() {
+  return (
+    <section className="py-24">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        {/* Glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 h-64 w-96 rounded-full blur-3xl"
+          style={{ background: "oklch(0.76 0.18 195 / 8%)" }}
+        />
+
+        <h2 className="relative text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+          Ready to move at the speed of thought?
+        </h2>
+        <p className="relative mt-6 text-lg leading-relaxed text-muted-foreground">
+          Join thousands of engineering teams who&apos;ve already made the switch. Set up in under 5 minutes.
+        </p>
+        <div className="relative mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#"
+            className="group flex items-center gap-2 rounded-md bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+          >
+            Start for free
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+          >
+            Read the docs instead
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
