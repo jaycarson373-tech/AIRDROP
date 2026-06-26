@@ -2,8 +2,19 @@ import { ArrowRight } from "lucide-react"
 
 export function CtaSection() {
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-3xl px-6 text-center">
+    <section className="relative py-24 overflow-hidden">
+      {/* Background graphic - raining coins */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          backgroundImage: "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_4_2026-06-26_13-20-12-Blp02OZQT88HLGZ9i2O792eiK81IWu.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      <div className="mx-auto max-w-3xl px-6 text-center relative z-10">
         {/* Glow */}
         <div
           aria-hidden="true"

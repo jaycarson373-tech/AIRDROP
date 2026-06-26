@@ -13,6 +13,17 @@ export function Hero() {
           backgroundSize: "48px 48px",
         }}
       />
+      {/* Background graphic - portal */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          backgroundImage: "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_3_2026-06-26_13-20-12-78GBXoPov0NHEFYeSiZwRZk7yZ08dy.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
       {/* Radial glow */}
       <div
         aria-hidden="true"
@@ -24,7 +35,7 @@ export function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 mb-8">
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          <span className="text-xs text-muted-foreground font-medium">Pump said soon. We&apos;re making it rain.</span>
+          <span className="text-xs text-muted-foreground font-medium">Pump said soon. We said Now.</span>
         </div>
 
         {/* Headline */}
