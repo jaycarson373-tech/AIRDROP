@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ExternalLink } from "lucide-react"
 
 const links = ["How It Works", "Dashboard", "Timeline", "Viral Tweets"]
 
@@ -34,13 +34,36 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Social + CTA */}
+        <div className="hidden md:flex items-center gap-4">
           <a
-            href="#"
+            href={`https://x.com/search?q=${process.env.NEXT_PUBLIC_AIRDROP_CA || 'airdrop'}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="X (Twitter)"
+            title="Follow on X"
+          >
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 11-11.858 10.318 10 10 0 0111.858-10.318z" />
+              <path d="M8 16.5c0-.667.333-1.333 1-2s1.333-.667 2-1 1.333.667 2 1 1 1.333 1 2m6-2c0-1.5-1-2.5-2-3s-2 .5-3 1.5" />
+            </svg>
+          </a>
+          <a
+            href={`https://solscan.io/token/${process.env.NEXT_PUBLIC_AIRDROP_CA}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Contract Address"
+            title="View on Solscan"
+          >
+            <code className="text-xs font-mono bg-surface px-2 py-1 rounded">{process.env.NEXT_PUBLIC_AIRDROP_CA?.slice(0, 4)}...{process.env.NEXT_PUBLIC_AIRDROP_CA?.slice(-4)}</code>
+          </a>
+          <a
+            href="/dashboard"
             className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
           >
-            View Drops
+            View Dashboard
           </a>
         </div>
 
@@ -63,10 +86,10 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#"
+            href="/dashboard"
             className="mt-2 rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
           >
-            View Drops
+            View Dashboard
           </a>
         </div>
       )}
