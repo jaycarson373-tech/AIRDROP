@@ -1,14 +1,14 @@
 const logos = [
-  "Stripe",
-  "Notion",
-  "Linear",
-  "Figma",
-  "Vercel",
-  "GitHub",
-  "Slack",
-  "Retool",
-  "Loom",
-  "Intercom",
+  "Pump Fun",
+  "Raydium",
+  "Magic Eden",
+  "Jupiter",
+  "Marinade",
+  "Orca",
+  "Phantom",
+  "Solflare",
+  "Ledger",
+  "Backpack",
 ]
 
 export function LogoTicker() {
@@ -17,7 +17,7 @@ export function LogoTicker() {
   return (
     <section className="border-y border-border py-10 overflow-hidden">
       <p className="text-center text-xs font-medium uppercase tracking-widest text-muted-foreground mb-8">
-        Trusted by teams at
+        Works with every major platform
       </p>
       <div className="relative flex overflow-hidden">
         {/* Left fade */}

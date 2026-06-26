@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ExternalLink } from "lucide-react"
 
 const links = ["How It Works", "Dashboard", "Timeline", "Viral Tweets"]
 
@@ -12,10 +12,10 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-semibold text-foreground">
+        <a href="/" className="flex items-center gap-2 font-semibold text-foreground">
           <img 
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg"
-            alt="Where Is The Airdrop"
+            alt="$AIRDROP"
             className="h-8 w-8 rounded-full"
           />
           <span className="text-base tracking-tight">$AIRDROP</span>
@@ -34,13 +34,35 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Social + CTA */}
+        <div className="hidden md:flex items-center gap-4">
           <a
-            href="#"
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors"
+            aria-label="X (Twitter)"
+            title="Follow on X"
+          >
+            <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.666-5.829 6.666H2.56l7.73-8.835L1.15 2.25h6.674l4.612 6.096L17.596 2.25h.648zm-1.125 17.5h1.824L7.12 3.993H5.233l11.891 15.757z"/>
+            </svg>
+          </a>
+          <a
+            href={`https://solscan.io/token/${process.env.NEXT_PUBLIC_AIRDROP_CA}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Contract Address"
+            title="View on Solscan"
+          >
+            <code className="text-xs font-mono bg-surface px-2 py-1 rounded">{process.env.NEXT_PUBLIC_AIRDROP_CA?.slice(0, 4)}...{process.env.NEXT_PUBLIC_AIRDROP_CA?.slice(-4)}</code>
+          </a>
+          <a
+            href="/dashboard"
             className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
           >
-            View Drops
+            View Dashboard
           </a>
         </div>
 
@@ -63,10 +85,10 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#"
+            href="/dashboard"
             className="mt-2 rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
           >
-            View Drops
+            View Dashboard
           </a>
         </div>
       )}

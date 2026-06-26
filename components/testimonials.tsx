@@ -1,24 +1,24 @@
 const testimonials = [
   {
     quote:
-      "We cut our release cycle from two weeks to two days. Veloce is the reason our team feels unstoppable.",
-    author: "Sarah Kim",
-    role: "CTO at Arcflow",
-    initials: "SK",
+      "I got my first airdrop 5 minutes after buying. This is the most transparent reward system I've ever seen.",
+    author: "Alex T.",
+    role: "$AIRDROP Holder",
+    initials: "AT",
   },
   {
     quote:
-      "The AI review caught a critical auth bug before it went live. That alone paid for the entire year.",
-    author: "Marcus Webb",
-    role: "Staff Engineer at Draftbit",
-    initials: "MW",
+      "Made $2,400 in passive drops over 2 weeks just holding. No staking, no BS, just tokens in my wallet.",
+    author: "Jordan V.",
+    role: "Top 50 Holder",
+    initials: "JV",
   },
   {
     quote:
-      "Finally, a tool that actually talks to the rest of our stack instead of living in a silo.",
-    author: "Priya Nair",
-    role: "Head of Platform, Lumen",
-    initials: "PN",
+      "Finally a token that actually does what it says. The drops are automated, on-chain, and real.",
+    author: "Casey M.",
+    role: "$AIRDROP Community",
+    initials: "CM",
   },
 ]
 
@@ -28,9 +28,9 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">What people say</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Community Stories</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Real teams. Real results.
+            Holders making bank.
           </h2>
         </div>
 

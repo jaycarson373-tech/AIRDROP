@@ -1,8 +1,8 @@
 const stats = [
-  { value: "10x", label: "Faster deployment cycles" },
-  { value: "98%", label: "Customer satisfaction score" },
-  { value: "3.2B", label: "Tasks completed this year" },
-  { value: "<50ms", label: "Average API response time" },
+  { value: "∞", label: "Drops every 5 minutes" },
+  { value: "100%", label: "Community owned & governed" },
+  { value: "$PUMP", label: "Real tokens, not promises" },
+  { value: "0%", label: "Buy tax on $AIRDROP" },
 ]
 
 export function Stats() {
