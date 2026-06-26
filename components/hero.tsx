@@ -13,17 +13,6 @@ export function Hero() {
           backgroundSize: "48px 48px",
         }}
       />
-      {/* Background graphic - portal */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-70"
-        style={{
-          backgroundImage: "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_3_2026-06-26_13-20-12-78GBXoPov0NHEFYeSiZwRZk7yZ08dy.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      />
       {/* Radial glow */}
       <div
         aria-hidden="true"
