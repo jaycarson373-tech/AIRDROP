@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, Zap } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
-const links = ["Product", "Pricing", "Docs", "Blog"]
+const links = ["How It Works", "Dashboard", "Timeline", "Viral Tweets"]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -13,10 +13,12 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 font-semibold text-foreground">
-          <span className="flex h-7 w-7 items-center justify-center rounded bg-primary">
-            <Zap className="h-4 w-4 text-primary-foreground" />
-          </span>
-          <span className="text-base tracking-tight">Veloce</span>
+          <img 
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg"
+            alt="Where Is The Airdrop"
+            className="h-8 w-8 rounded-full"
+          />
+          <span className="text-base tracking-tight">$AIRDROP</span>
         </a>
 
         {/* Desktop nav */}
@@ -34,14 +36,11 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Sign in
-          </a>
           <a
             href="#"
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+            className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
           >
-            Get started free
+            View Drops
           </a>
         </div>
 
@@ -67,7 +66,7 @@ export function Navbar() {
             href="#"
             className="mt-2 rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
           >
-            Get started free
+            View Drops
           </a>
         </div>
       )}
