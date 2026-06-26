@@ -10,25 +10,12 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Veloce — Ship 10x Faster',
-  description: 'The AI-powered workspace for engineering teams who refuse to slow down. Connect code, tasks, and docs in one place.',
+  title: '$AIRDROP — Where Is The Airdrop?',
+  description: 'Pump said soon. The community kept waiting. $AIRDROP steps in. Every 5 minutes, creator fees buy PUMP and airdrop it to the top 50 holders.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg',
+    apple: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg',
   },
 }
 
