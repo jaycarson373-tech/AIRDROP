@@ -1,47 +1,47 @@
-import { BrainCircuit, GitMerge, LayoutDashboard, MessageSquareCode, ShieldCheck, Zap } from "lucide-react"
+import { Gift, TrendingUp, Lock, Clock, Zap, Coins } from "lucide-react"
 
 const features = [
   {
-    icon: BrainCircuit,
-    title: "AI-native workspace",
+    icon: Gift,
+    title: "Automatic Airdrops",
     description:
-      "Every action — write, review, deploy — is powered by context-aware AI that understands your codebase end to end.",
+      "Every 5 minutes, $AIRDROP purchases real PUMP tokens and distributes them to top 50 holders. No claims needed.",
     badge: "Core",
   },
   {
-    icon: GitMerge,
-    title: "Auto PR reviews",
+    icon: TrendingUp,
+    title: "Sustainable Rewards",
     description:
-      "Catch bugs, style issues, and security holes before they reach main. Veloce reviews every pull request in seconds.",
+      "Creator fees fuel the system forever. As more people buy and sell, the airdrop pool grows. It&apos;s self-sustaining.",
     badge: null,
   },
   {
-    icon: LayoutDashboard,
-    title: "Unified dashboard",
+    icon: Lock,
+    title: "Transparent On-Chain",
     description:
-      "Tasks, deploys, incidents, and metrics in one place. No more tab-switching between five tools just to ship one feature.",
+      "Every transaction is verifiable on-chain. Watch your rewards get bought and distributed in real-time.",
     badge: null,
   },
   {
-    icon: MessageSquareCode,
-    title: "In-line suggestions",
+    icon: Clock,
+    title: "Passive Income",
     description:
-      "Real-time code suggestions inside your editor, powered by your own repo history — not generic LLM training data.",
-    badge: "Beta",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Zero-trust security",
-    description:
-      "SOC 2 Type II certified. All data encrypted at rest and in transit. SSO, RBAC, and audit logs included on every plan.",
-    badge: null,
+      "Hold tokens, earn rewards. No staking, no lockups, no minimum. Just buy and watch the drops roll in.",
+    badge: "Live",
   },
   {
     icon: Zap,
-    title: "One-click deploys",
+    title: "Lightning Fast",
     description:
-      "Push to any cloud provider in under 30 seconds with automatic rollbacks if anything goes sideways.",
-    badge: "New",
+      "Drops execute every 300 seconds like clockwork. You never miss a reward window—it&apos;s all automatic.",
+    badge: null,
+  },
+  {
+    icon: Coins,
+    title: "Real PUMP Tokens",
+    description:
+      "Not vouchers, not IOUs. You get actual PUMP tokens sent to your wallet. Full control, full custody.",
+    badge: null,
   },
 ]
 
@@ -51,9 +51,9 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Section header */}
         <div className="mb-16 max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Features</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">How It Works</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Everything your team needs. Nothing it doesn&apos;t.
+            Real rewards. Real tokens. Real easy.
           </h2>
         </div>
 

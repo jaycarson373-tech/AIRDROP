@@ -1,4 +1,4 @@
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight, Gift } from "lucide-react"
 
 export function Hero() {
   return (
@@ -24,22 +24,36 @@ export function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 mb-8">
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          <span className="text-xs text-muted-foreground font-medium">Now in public beta &mdash; free forever</span>
+          <span className="text-xs text-muted-foreground font-medium">Pump said soon. We&apos;re making it rain.</span>
         </div>
 
         {/* Headline */}
         <h1 className="text-balance text-5xl font-semibold tracking-tight text-foreground md:text-7xl leading-[1.08]">
-          Your team ships
+          Where is the
           <br />
-          <span className="text-primary">10x faster.</span>
-          <br />
-          No excuses.
+          <span className="text-primary">AIRDROP?</span>
         </h1>
 
         {/* Subheading */}
         <p className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Veloce connects your code, tasks, and docs into one AI-powered workspace. Stop context-switching. Start shipping.
+          Every 5 minutes, $AIRDROP collects creator fees and uses them to buy PUMP tokens directly from the market, then airdrops them to the top 50 holders. Free money for believers.
         </p>
+
+        {/* Stats Row */}
+        <div className="mt-12 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="rounded-lg border border-border bg-surface/50 p-4">
+            <div className="text-2xl font-bold text-primary">5m</div>
+            <div className="text-xs text-muted-foreground mt-1">Between drops</div>
+          </div>
+          <div className="rounded-lg border border-border bg-surface/50 p-4">
+            <div className="text-2xl font-bold text-primary">50</div>
+            <div className="text-xs text-muted-foreground mt-1">Top holders rewarded</div>
+          </div>
+          <div className="rounded-lg border border-border bg-surface/50 p-4">
+            <div className="text-2xl font-bold text-primary">100%</div>
+            <div className="text-xs text-muted-foreground mt-1">Automatic rewards</div>
+          </div>
+        </div>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -47,21 +61,21 @@ export function Hero() {
             href="#"
             className="group flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
           >
-            Start building free
+            <Gift className="h-4 w-4" />
+            Claim Your Drops
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
             href="#"
             className="flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-surface transition-colors"
           >
-            <Play className="h-4 w-4 text-primary" />
-            Watch 2-min demo
+            Buy $AIRDROP
           </a>
         </div>
 
         {/* Social proof blurb */}
         <p className="mt-8 text-xs text-muted-foreground">
-          Trusted by <span className="text-foreground font-medium">4,200+</span> engineering teams worldwide
+          Next drop in <span className="text-primary font-medium">3m 42s</span>
         </p>
       </div>
     </section>

@@ -2,51 +2,51 @@ import { Check } from "lucide-react"
 
 const plans = [
   {
-    name: "Starter",
-    price: "Free",
-    sub: "forever",
-    description: "For solo devs and small experiments.",
-    cta: "Get started",
+    name: "Holder",
+    price: "0%",
+    sub: "buy tax",
+    description: "Buy $AIRDROP with zero fees.",
+    cta: "Buy Now",
     ctaStyle: "border",
     features: [
-      "Up to 3 projects",
-      "AI code review (50 PRs/mo)",
-      "Basic dashboard",
-      "Community support",
+      "Zero buy tax",
+      "5-minute airdrops",
+      "Full PUMP rewards",
+      "On-chain transparency",
     ],
     highlight: false,
   },
   {
-    name: "Pro",
-    price: "$29",
-    sub: "per seat / month",
-    description: "For growing teams that ship constantly.",
-    cta: "Start free trial",
+    name: "Top 50",
+    price: "2x",
+    sub: "rewards",
+    description: "The top 50 holders earn double drops.",
+    cta: "Stake Now",
     ctaStyle: "primary",
     features: [
-      "Unlimited projects",
-      "Unlimited AI code reviews",
-      "Unified dashboard + metrics",
-      "In-line editor suggestions",
-      "One-click deploys",
-      "Priority email support",
+      "2x drop multiplier",
+      "Priority distributions",
+      "Governance voting",
+      "Exclusive holder perks",
+      "Leaderboard recognition",
+      "Community benefits",
     ],
     highlight: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    sub: "volume pricing",
-    description: "For organizations with security & compliance needs.",
-    cta: "Talk to sales",
+    name: "Liquidity",
+    price: "2%",
+    sub: "sell tax",
+    description: "Fee structure supports the ecosystem.",
+    cta: "View Pair",
     ctaStyle: "border",
     features: [
-      "Everything in Pro",
-      "SSO & SAML",
-      "RBAC & audit logs",
-      "SOC 2 compliance docs",
-      "Dedicated Slack channel",
-      "SLA guarantee",
+      "2% sell tax to treasury",
+      "Funds future airdrops",
+      "Liquidity protection",
+      "Community vote on use",
+      "Full audit transparency",
+      "Anti-rug guarantees",
     ],
     highlight: false,
   },
@@ -58,11 +58,10 @@ export function Pricing() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mb-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Pricing</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Tokenomics</p>
           <h2 className="text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Simple, transparent pricing.
+            Built to reward holders.
           </h2>
-          <p className="mt-4 text-muted-foreground text-base">No hidden fees. Cancel anytime.</p>
         </div>
 
         {/* Cards */}

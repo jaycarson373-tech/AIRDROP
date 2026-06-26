@@ -1,21 +1,19 @@
-import { Zap } from "lucide-react"
-
 const cols = [
   {
-    heading: "Product",
-    links: ["Features", "Pricing", "Changelog", "Roadmap"],
+    heading: "Protocol",
+    links: ["How it Works", "Tokenomics", "Roadmap", "Whitepaper"],
   },
   {
-    heading: "Developers",
-    links: ["Documentation", "API Reference", "Status", "Open Source"],
+    heading: "Community",
+    links: ["Discord", "Twitter", "Telegram", "Medium"],
   },
   {
-    heading: "Company",
-    links: ["About", "Blog", "Careers", "Press kit"],
+    heading: "Resources",
+    links: ["Contract", "Charts", "Dashboard", "Support"],
   },
   {
     heading: "Legal",
-    links: ["Privacy", "Terms", "Security", "Cookies"],
+    links: ["Privacy", "Terms", "Security", "Disclaimers"],
   },
 ]
 
@@ -27,13 +25,15 @@ export function Footer() {
           {/* Brand */}
           <div className="md:w-64 shrink-0">
             <a href="#" className="flex items-center gap-2 text-foreground font-semibold">
-              <span className="flex h-7 w-7 items-center justify-center rounded bg-primary">
-                <Zap className="h-4 w-4 text-primary-foreground" />
-              </span>
-              Veloce
+              <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_2026-06-26_11-17-49-ADRvjT68NPxLVR2NMQ9uDY6gseZBdU.jpg"
+                alt="$AIRDROP"
+                className="h-7 w-7 rounded-full"
+              />
+              $AIRDROP
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground max-w-xs">
-              The AI-powered workspace for engineering teams who refuse to slow down.
+              Where Pump said soon. Real PUMP tokens. Every 5 minutes. Forever.
             </p>
           </div>
 
@@ -57,8 +57,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Veloce, Inc. All rights reserved.</p>
-          <p>Built for the teams that build everything else.</p>
+          <p>&copy; {new Date().getFullYear()} $AIRDROP. All rewards reserved.</p>
+          <p>Where Pump said soon. We made it real.</p>
         </div>
       </div>
     </footer>
